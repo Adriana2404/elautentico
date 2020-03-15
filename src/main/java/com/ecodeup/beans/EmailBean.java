@@ -1,4 +1,4 @@
-package com.ecodeup.beans;
+/*package com.ecodeup.beans;
  
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -76,4 +76,4 @@ public class EmailBean {
 			return me.getMessage();
 		}
 	}
-}
+}/*
