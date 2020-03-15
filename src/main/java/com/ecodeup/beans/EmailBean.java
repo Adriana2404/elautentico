@@ -76,4 +76,4 @@ public class EmailBean {
 			return me.getMessage();
 		}
 	}
-}/*
+}*/
