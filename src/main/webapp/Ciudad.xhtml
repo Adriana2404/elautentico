@@ -1,0 +1,99 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core">
+<h:head>
+	<title><h:outputText value="#{translate['GestionarCiudades']}"></h:outputText></title>
+</h:head>
+<h:body>
+	<ui:composition template="/template/Plantilla.xhtml">
+		<ui:define name="mainContain">
+			<div class="panel panel-default">
+				<div class="panel-heading">
+					<h:outputText value="#{translate['Ciudades']}"></h:outputText>
+				</div>x|
+				<div class="panel-body">
+					<h:form>
+
+						<div class="form-row">
+
+							<div class="form-group col-6">
+								<label><h:outputText value="#{translate['Id']}:"></h:outputText>
+								</label>
+								<h:inputText disabled="true"
+									value="#{ciudadBean.ciudad.idciudad}" styleClass="form-control" />
+							</div>
+
+							<div class="form-group col-6">
+								<label><h:outputText value="#{translate['Nombre']}:"></h:outputText>
+								</label>
+								<h:inputText value="#{ciudadBean.ciudad.nombreCiudad}"
+									styleClass="form-control" />
+							</div>
+
+							<div class="form-group col-6">
+								<label><h:outputText
+										value="#{translate['Departamento']}:"></h:outputText> </label>
+								<h:inputText value="#{ciudadBean.ciudad.departamento}"
+									styleClass="form-control" />
+							</div>
+
+						</div>
+						<p>
+							<h:commandButton action="#{ciudadBean.registrar()}"
+								value="Registrar" styleClass="btn btn-primary" />
+							<h:commandButton action="#{ciudadBean.modificar()}"
+								value="Actualizar" styleClass="btn btn-success" />
+						</p>
+						<br />
+
+						<h:dataTable value="#{ciudadBean.listar}" var="ciu"
+							styleClass="table">
+
+							<h:column>
+								<f:facet name="header">
+									<h:outputLabel value="#{translate['Id']}" />
+								</f:facet>
+								<h:outputLabel value="#{ciu.idciudad}" />
+							</h:column>
+
+							<h:column>
+								<f:facet name="header">
+									<h:outputLabel value="#{translate['Nombre']}" />
+								</f:facet>
+								<h:outputLabel value="#{ciu.nombreCiudad}" />
+							</h:column>
+
+							<h:column>
+								<f:facet name="header">
+									<h:outputLabel value="#{translate['Departamento']}" />
+								</f:facet>
+								<h:outputLabel value="#{ciu.departamento}" />
+							</h:column>
+
+							<h:column>
+								<f:facet name="header">
+									<h:outputLabel value="#{translate['Eliminar']}" />
+								</f:facet>
+								<h:commandLink actionListener="#{ciudadBean.eliminar(ciu)}"
+									value="#{translate['Eliminar']}" />
+							</h:column>
+
+							<h:column>
+								<f:facet name="header">
+									<h:outputLabel value="#{translate['Modificar']}" />
+								</f:facet>
+								<h:commandLink actionListener="#{ciudadBean.leer(ciu)}"
+									value="#{translate['Modificar']}" />
+							</h:column>
+
+						</h:dataTable>
+					</h:form>
+				</div>
+			</div>
+		</ui:define>
+	</ui:composition>
+</h:body>
+</html>

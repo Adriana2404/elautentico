@@ -1,0 +1,247 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core">
+<h:head>
+	<title><h:outputText value="#{translate['Gestionarusuario']}"></h:outputText></title>
+</h:head>
+<h:body>
+	<ui:composition template="/template/Plantilla.xhtml">
+		<ui:define name="mainContain">
+			<div class="panel panel-default">
+				<div class="panel-heading">
+					<h:outputText value="#{translate['Usuario']}"></h:outputText>
+				</div>
+				<div class="panel-body">
+					<h:form>
+
+						<div class="form-row">
+
+							<div class="form-group col-sm-6">
+								<label> <h:outputText value="#{translate['Idusuario']}">
+									</h:outputText>
+								</label>
+								<h:inputText disabled="true"
+									value="#{usuarioBean.usuario.idusuario}"
+									styleClass="form-control" />
+							</div>
+
+							<div class="form-group col-sm-6">
+								<label><h:outputText
+										value="#{translate['NumeroDocumento']}:"></h:outputText> </label>
+								<h:inputText value="#{usuarioBean.usuario.numeroDocumento}"
+									styleClass="form-control" />
+							</div>
+
+							<div class="form-group col-sm-3">
+								<label><h:outputText
+										value="#{translate['primernombre']}:"></h:outputText> </label>
+								<h:inputText value="#{usuarioBean.usuario.primernombre}"
+									styleClass="form-control" />
+							</div>
+
+							<div class="form-group col-sm-3">
+								<label><h:outputText
+										value="#{translate['SegundoNombre']}:"></h:outputText> </label>
+								<h:inputText value="#{usuarioBean.usuario.segundoNombre}"
+									styleClass="form-control" />
+							</div>
+
+							<div class="form-group col-sm-3">
+								<label><h:outputText
+										value="#{translate['primerApellido']}:"></h:outputText> </label>
+								<h:inputText value="#{usuarioBean.usuario.pimerApellido}"
+									styleClass="form-control" />
+							</div>
+							<div class="form-group col-sm-3">
+								<label><h:outputText
+										value="#{translate['SegundoApellido']}:"></h:outputText> </label>
+								<h:inputText value="#{usuarioBean.usuario.segundoApellido}"
+									styleClass="form-control" />
+							</div>
+
+
+							<div class="form-group col-sm-4">
+								<label><h:outputText value="#{translate['fechanac']}:"></h:outputText>
+								</label>
+								<h:inputText value="#{usuarioBean.usuario.fechanac}"
+									styleClass="form-control" />
+							</div>
+
+							<div class="form-group col-sm-4">
+								<label><h:outputText value="#{translate['telefono']}:"></h:outputText></label>
+
+								<h:inputText value="#{usuarioBean.usuario.telefono}"
+									styleClass="form-control" />
+							</div>
+
+
+							<div class="form-group col-sm-4">
+								<label><h:outputText value="#{translate['direccion']}:"></h:outputText></label>
+								<h:inputText value="#{usuarioBean.usuario.direccion}"
+									styleClass="form-control" />
+							</div>
+
+
+							<div class="form-group col-sm-6">
+								<label><h:outputText value="#{translate['email']}:"></h:outputText></label>
+								<h:inputText value="#{usuarioBean.usuario.email}"
+									styleClass="form-control" />
+							</div>
+
+							<div class="form-group col-sm-6">
+								<label><h:outputText value="#{translate['barrio']}:"></h:outputText></label>
+								<h:inputText value="#{usuarioBean.usuario.barrio}"
+									styleClass="form-control" />
+							</div>
+						</div>
+						<p>
+							<h:commandButton action="#{usuarioBean.registrar()}"
+								value="Registrar" styleClass="btn btn-primary" />
+							<h:commandButton action="#{usuarioBean.modificar()}"
+								value="Actualizar" styleClass="btn btn-success" />
+						</p>
+						<br />
+
+						<h:dataTable value="#{usuarioBean.listar}" var="usu"
+							styleClass="table">
+							<h:column>
+								<f:facet name="header">
+									<h:outputLabel value="#{translate['Idusuario']}" />
+								</f:facet>
+								<h:outputLabel value="#{usu.idusuario}" />
+							</h:column>
+
+							<h:column>
+								<f:facet name="header">
+									<h:outputLabel value="#{translate['NumeroDocumento']}" />
+								</f:facet>
+								<h:outputLabel value="#{usu.numeroDocumento}" />
+							</h:column>
+
+							<h:column>
+								<f:facet name="header">
+									<h:outputLabel value="#{translate['primernombre']}" />
+								</f:facet>
+								<h:outputLabel value="#{usu.primernombre}" />
+							</h:column>
+
+							<h:column>
+								<f:facet name="header">
+									<h:outputLabel value="#{translate['primerApellido']}" />
+								</f:facet>
+								<h:outputLabel value="#{usu.pimerapellido}" />
+							</h:column>
+
+							<!-- 
+							<h:column>
+								<f:facet name="header">
+									<h:outputLabel value="#{translate['fechanac']}" />
+								</f:facet>
+								<h:outputLabel value="#{usu.fechanac}" />
+							</h:column>
+-->
+							<h:column>
+								<f:facet name="header">
+									<h:outputLabel value="#{translate['telefono']}" />
+								</f:facet>
+								<h:outputLabel value="#{usu.telefono}" />
+							</h:column>
+							
+<!-- 
+							<h:column>
+								<f:facet name="header">
+									<h:outputLabel value="#{translate['direccion']}" />
+								</f:facet>
+								<h:outputLabel value="#{usu.direccion}" />
+							</h:column>
+ -->
+							<h:column>
+								<f:facet name="header">
+									<h:outputLabel value="#{translate['nombreRol']}" />
+								</f:facet>
+								<h:outputLabel value="#{usu.nombreRol}" />
+							</h:column>
+
+							<h:column>
+								<f:facet name="header">
+									<h:outputLabel value="#{translate['NombreBarrio']}" />
+								</f:facet>
+								<h:outputLabel value="#{usu.nombreBarrio}" />
+							</h:column>
+
+							<h:column>
+								<f:facet name="header">
+									<h:outputLabel value="#{translate['email']}" />
+								</f:facet>
+								<h:outputLabel value="#{usu.email}" />
+							</h:column>
+
+							<h:column>
+								<f:facet name="header">
+									<h:outputLabel value="#{translate['Eliminar']}" />
+								</f:facet>
+								<h:commandLink actionListener="#{usuarioBean.eliminar(usu)}"
+									value="Eliminar" />
+							</h:column>
+
+							<h:column>
+								<f:facet name="header">
+									<h:outputLabel value="#{translate['Modificar']}" />
+								</f:facet>
+								<h:commandLink actionListener="#{usuarioBean.leer(usu)}"
+									value="Modificar" />
+							</h:column>
+
+						</h:dataTable>
+						<h3 style="color: #000">Enviar Correo</h3>
+						<div class="form-row">
+
+							<div class="form-group col-sm-10">
+								<label> <h:outputText value="Email">
+									</h:outputText>
+								</label>
+								<h:inputText value="#{usuarioBean.emails}" styleClass="form-control input-sm" id="i-Email"/>
+							</div>
+							<div class="form-group col-sm-2">
+								<h:commandLink actionListener="#{usuarioBean.getListarEmail()}"
+								value="Seleccionar Todos" styleClass="btn btn-primary" style=" margin-top: 25px;">
+									<f:ajax render="i-Email"></f:ajax>
+								</h:commandLink>
+							</div>
+							<div class="form-group col-sm-12">
+								<label> <h:outputText value="Asunto">
+									</h:outputText>
+								</label>
+								<h:inputText id="asunto-i" value="#{usuarioBean.subject}" styleClass="form-control input-sm" />
+							</div>
+							<div class="form-group col-sm-12">
+								<label> <h:outputText value="Mensaje">
+									</h:outputText>
+								</label>
+								<h:inputTextarea id="message-i" value="#{usuarioBean.message}" rows = "10" styleClass="form-control" />
+							</div>
+						</div>
+						<div class="form-group col-sm-12">
+						<h:commandButton action="#{usuarioBean.enviarMensaje(usuarioBean.emails, usuarioBean.subject, usuarioBean.message)}"
+								value="Enviar" styleClass="btn btn-primary">
+									<f:ajax render="messager"></f:ajax>
+									<f:ajax render="message-i"></f:ajax>
+									<f:ajax render="asunto-i"></f:ajax>
+									<f:ajax render="i-Email"></f:ajax>
+								</h:commandButton>>
+								<br />
+								<br />
+								<br />
+								<h:outputText id="messager" value="#{usuarioBean.resultMessage}" styleClass="alert alert-info">
+								</h:outputText>	
+								</div>
+					</h:form>
+				</div>
+			</div>
+		</ui:define>
+	</ui:composition>
+</h:body>
+</html>

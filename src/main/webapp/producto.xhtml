@@ -1,0 +1,169 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core">
+<h:head>
+	<title><h:outputText value="#{translate['GestionarProducto']}"></h:outputText></title>
+</h:head>
+<h:body>
+	<ui:composition template="/template/Plantilla.xhtml">
+		<ui:define name="mainContain">
+			<link href="/css/bootstrap.css"></link>
+			<link rel="stylesheet" type="text/css"
+			href="css/jquery.dataTables.min.css" />
+			<script type="text/javascript" src="js/jquery-1.11.1.min.js"></script>
+			<script type="text/javascript" src="js/datatables.min.js"></script>
+			
+			<script type="text/javascript" src="js/grid.js"></script>
+			
+			<div class="panel panel-default">
+				<div class="panel-heading">
+					<h:outputText value	="#{translate['producto']}"></h:outputText>
+				</div>
+				<div class="panel-body">
+					<h:form>
+
+						<div class="form-row">
+
+							<div class="form-group col-sm-6">
+								<label><h:outputText value="#{translate['IdProducto']}:" 
+										></h:outputText> </label>
+								<h:inputText disabled="true"
+									value="#{productoBean.producto.idproducto}"
+									styleClass="form-control" />
+							</div>
+
+							<div class="form-group col-sm-6">
+								<label><h:outputText value="#{translate['cantidad']}:"></h:outputText>
+								</label>
+								<h:inputText value="#{productoBean.producto.cantidad}"
+									styleClass="form-control" />
+							</div>
+
+							<div class="form-group col-sm-6">
+								<label><h:outputText
+										value="#{translate['NombreProducto']}:"></h:outputText> </label>
+								<h:inputText value="#{productoBean.producto.nombreProducto}"
+									styleClass="form-control" />
+							</div>
+
+							<div class="form-group col-sm-6">
+								<label><h:outputText
+										value="#{translate['tipoproducto']}:"></h:outputText> </label>
+								<h:inputText value="#{productoBean.producto.tipoProducto_idTipoProducto}"
+									styleClass="form-control" />
+							</div>
+							<div class="form-group col-sm-6">
+								<label><h:outputText
+										value="#{translate['marca']}:"></h:outputText> </label>
+								<h:inputText value="#{productoBean.producto.marca_idmarca}"
+									styleClass="form-control" />
+							</div>
+							<div class="form-group col-sm-6">
+								<label><h:outputText
+										value="#{translate['Lotes']}:"></h:outputText> </label>
+								<h:inputText value="#{productoBean.producto.lote_idLote}"
+									styleClass="form-control" />
+							</div>
+							
+							<div class="form-group col-sm-6">
+								<label><h:outputText
+										value="#{translate['unidaddemedida']}:"></h:outputText> </label>
+								<h:inputText value="#{productoBean.producto.unidaddemedida}"
+									styleClass="form-control" />
+							</div>
+
+							<div class="form-group col-sm-6">
+								<label><h:outputText value="#{translate['valor']}:"></h:outputText>
+								</label>
+								<h:inputText value="#{productoBean.producto.valor}"
+									styleClass="form-control" />
+							</div>
+						</div>
+						<p>
+							<h:commandButton action="#{productoBean.registrar()}"
+								value="Registrar" styleClass="btn btn-primary" />
+							<h:commandButton action="#{productoBean.modificar()}"
+								value="Actualizar" styleClass="btn btn-success" />
+						</p>
+						<br />
+
+						<h:dataTable value="#{productoBean.listar}" var="pro"
+							styleClass="table main-grid">
+							<h:column>
+								<f:facet name="header">
+									<h:outputLabel value="#{translate['IdProducto']}" />
+								</f:facet>
+								<h:outputLabel value="#{pro.idproducto}" />
+							</h:column>
+
+							<h:column>
+								<f:facet name="header">
+									<h:outputLabel value="#{translate['NombreProducto']}" />
+								</f:facet>
+								<h:outputLabel value="#{pro.nombreProducto}" />
+							</h:column>
+
+
+							<h:column>
+								<f:facet name="header">
+									<h:outputLabel value="#{translate['unidaddemedida']}" />
+								</f:facet>
+								<h:outputLabel value="#{pro.unidaddemedida}" />
+							</h:column>
+
+
+							<h:column>
+								<f:facet name="header">
+									<h:outputLabel value="#{translate['valor']}" />
+								</f:facet>
+								<h:outputLabel value="#{pro.valor}" />
+							</h:column>
+
+							<h:column>
+								<f:facet name="header">
+									<h:outputLabel value="#{translate['cantidad']}" />
+								</f:facet>
+								<h:outputLabel value="#{pro.cantidad}" />
+							</h:column>
+
+
+							<h:column>
+								<f:facet name="header">
+									<h:outputLabel value="#{translate['nombre']}" />
+								</f:facet>
+								<h:outputLabel value="#{pro.nombreProducto}" />
+							</h:column>
+
+							<h:column>
+								<f:facet name="header">
+									<h:outputLabel value="#{translate['fechavencimiento']}" />
+								</f:facet>
+								<h:outputLabel value="#{pro.fechavencimiento}"/>
+							</h:column>
+							<h:column>
+								<f:facet name="header">
+									<h:outputLabel value="#{translate['Eliminar']}" />
+								</f:facet>
+								<h:commandLink actionListener="#{productoBean.eliminar(pro)}"
+									value="Eliminar" />
+							</h:column>
+
+							<h:column>
+								<f:facet name="header">
+									<h:outputLabel value="#{translate['Modificar']}" />
+								</f:facet>
+								<h:commandLink actionListener="#{productoBean.leer(pro)}"
+									value="Modificar" />
+							</h:column>
+
+						</h:dataTable>
+					</h:form>
+				</div>
+			</div>
+		</ui:define>
+	</ui:composition>
+</h:body>
+</html>

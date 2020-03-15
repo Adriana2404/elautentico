@@ -1,0 +1,109 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core">
+<h:head>
+	<title><h:outputText
+			value="#{translate['GestionarProductoporventa']}"></h:outputText></title>
+</h:head>
+<h:body>
+	<ui:composition template="/template/Plantilla.xhtml">
+		<ui:define name="mainContain">
+			<div class="panel panel-default">
+				<div class="panel-heading">
+					<h:outputText value="#{translate['productoporventa']}"></h:outputText>
+				</div>
+				<div class="panel-body">
+					<h:form>
+
+						<div class="form-row">
+
+							<div class="form-group col-6">
+								<label><h:outputText
+										value="#{translate['Idcantidadproductosporventa']}:"></h:outputText>
+								</label>
+								<h:inputText disabled="true"
+									value="#{productoporventaBean.productoporventa.Idcantidadproductoporventa}"
+									styleClass="form-control" />
+							</div>
+
+						</div>
+						<p>
+							<h:commandButton action="#{productoporventaBean.registrar()}"
+								value="Registrar" styleClass="btn btn-primary" />
+							<h:commandButton action="#{productoporventaBean.modificar()}"
+								value="Actualizar" styleClass="btn btn-success" />
+						</p>
+						<br />
+
+						<h:dataTable value="#{productoporventaBean.listar}" var="pro"
+							styleClass="table">
+							<h:column>
+								<f:facet name="header">
+									<h:outputLabel value="#{translate['Idproductosporventa']}" />
+								</f:facet>
+								<h:outputLabel value="#{pro.Idproductosporventa}" />
+							</h:column>
+
+							<h:column>
+								<f:facet name="header">
+									<h:outputLabel value="#{translate['idproducto']}" />
+								</f:facet>
+								<h:outputLabel value="#{pro.idproducto}" />
+							</h:column>
+							<h:column>
+								<f:facet name="header">
+									<h:outputLabel value="#{translate['registro']}" />
+								</f:facet>
+								<h:outputLabel value="#{pro.registro}" />
+							</h:column>
+
+							<h:column>
+								<f:facet name="header">
+									<h:outputLabel value="#{translate['fecha']}" />
+								</f:facet>
+								<h:outputLabel value="#{pro.fecha}" />
+							</h:column>
+
+							<h:column>
+								<f:facet name="header">
+									<h:outputLabel value="#{translate['Nombreproducto']}" />
+								</f:facet>
+								<h:outputLabel value="#{pro.Nombreproducto}" />
+							</h:column>
+
+							<h:column>
+								<f:facet name="header">
+									<h:outputLabel value="#{translate['cantidad']}" />
+								</f:facet>
+								<h:outputLabel value="#{pro.cantidad}" />
+							</h:column>
+
+							<h:column>
+								<f:facet name="header">
+									<h:outputLabel value="#{translate['Eliminar']}" />
+								</f:facet>
+								<h:commandLink
+									actionListener="#{productoporventaBean.eliminar(pro)}"
+									value="Eliminar" />
+							</h:column>
+
+							<h:column>
+								<f:facet name="header">
+									<h:outputLabel value="#{translate['Modificar']}" />
+								</f:facet>
+								<h:commandLink
+									actionListener="#{productoporventaBean.leer(pro)}"
+									value="Modificar" />
+							</h:column>
+
+						</h:dataTable>
+					</h:form>
+				</div>
+			</div>
+		</ui:define>
+	</ui:composition>
+</h:body>
+</html>

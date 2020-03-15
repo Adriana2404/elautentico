@@ -1,0 +1,107 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core">
+<h:head>
+	<title><h:outputText value="#{translate['GestionarBarrio']}"></h:outputText></title>
+</h:head>
+<h:body>
+	<div class="panel panel-default">
+		<div class="panel-heading">
+			<h:outputText value="#{translate['Barrio']}"></h:outputText>
+		</div>
+		<div class="panel-body">
+			<h:form>
+
+				<div class="form-row">
+
+					<div class="form-group col-6">
+						<label><h:outputText value="#{translate['IdBarrio']}:"></h:outputText>
+						</label>
+						<h:inputText disabled="true" value="#{barrioBean.barrio.idBarrio}"
+							styleClass="form-control" />
+					</div>
+
+					<div class="form-group col-6">
+						<label><h:outputText value="#{translate['NombreBarrio']}:"></h:outputText> </label>
+						<h:inputText value="#{barrioBean.barrio.nombreBarrio}"
+							styleClass="form-control" />
+					</div>
+
+					<div class="form-group col-6">
+						<label><h:outputText value="#{translate['ciudad']}:"></h:outputText>
+						</label>
+						<h:inputText value="#{barrioBean.barrio.cuidad}"
+							styleClass="form-control" />
+					</div>
+
+				</div>
+				<p>
+					<h:commandButton action="#{barrioBean.registrar()}"
+						value="Registrar" styleClass="btn btn-primary" />
+					<h:commandButton action="#{barrioBean.modificar()}"
+						value="Actualizar" styleClass="btn btn-success" />
+				</p>
+				<br />
+
+				<h:dataTable value="#{barrioBean.listar}" var="bar"
+					styleClass="table">
+					<h:column>
+						<f:facet name="header">
+							<h:outputLabel value="#{translate['IdBarrio']}" />
+						</f:facet>
+						<h:outputLabel value="#{bar.idbarrio}" />
+					</h:column>
+
+					<h:column>
+						<f:facet name="header">
+							<h:outputLabel value="#{translate['NombreBarrio']}" />
+						</f:facet>
+						<h:outputLabel value="#{bar.NombreBarrio}" />
+					</h:column>
+					<h:column>
+						<f:facet name="header">
+							<h:outputLabel value="#{translate['ciudad']}" />
+						</f:facet>
+						<h:outputLabel value="#{bar.ciudad}" />
+					</h:column>
+
+
+					<h:column>
+						<f:facet name="header">
+							<h:outputLabel value="#{translate['NombreCiudad']}" />
+						</f:facet>
+						<h:outputLabel value="#{bar.NombreCiudad}" />
+					</h:column>
+
+					<h:column>
+						<f:facet name="header">
+							<h:outputLabel value="#{translate['Departamento']}" />
+						</f:facet>
+						<h:outputLabel value="#{bar.Departamento}" />
+					</h:column>
+
+					<h:column>
+						<f:facet name="header">
+							<h:outputLabel value="#{translate['Eliminar']}" />
+						</f:facet>
+						<h:commandLink actionListener="#{barrioBean.eliminar(bar)}"
+							value="Eliminar" />
+					</h:column>
+
+					<h:column>
+						<f:facet name="header">
+							<h:outputLabel value="#{translate['Modificar']}" />
+						</f:facet>
+						<h:commandLink actionListener="#{barrioBean.leer(bar)}"
+							value="Modificar" />
+					</h:column>
+
+				</h:dataTable>
+			</h:form>
+		</div>
+	</div>
+</h:body>
+</html>

@@ -1,0 +1,107 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core">
+<h:head>
+	<title><h:outputText value="#{translate['GestionarLotes']}"></h:outputText></title>
+</h:head>
+<h:body>
+	<ui:composition template="/template/Plantilla.xhtml">
+		<ui:define name="mainContain">
+			<link rel="stylesheet" type="text/css"
+			href="css/jquery.dataTables.min.css" />
+			<script type="text/javascript" src="js/jquery-1.11.1.min.js"></script>
+			<script type="text/javascript" src="js/datatables.min.js"></script>
+			
+			
+			<script type="text/javascript" src="js/grid.js"></script>
+			
+			
+			<div class="panel panel-default">
+				<div class="panel-heading">
+					<h:outputText value="#{translate['Lotes']}"></h:outputText>
+				</div>
+				<div class="panel-body">
+					<h:form>
+
+						<div class="form-row">
+
+							<div class="form-group col-6">
+								<label><h:outputText value="#{translate['Id']}:"></h:outputText>
+								</label>
+								<h:inputText disabled="true" value="#{loteBean.lote.idlote}"
+									styleClass="form-control" />
+							</div>
+
+							<div class="form-group col-6">
+								<label><h:outputText
+										value="#{translate['FechadeFabricación']}:"></h:outputText> </label>
+								<h:inputText value="#{loteBean.lote.fechafabricacion}"
+									styleClass="form-control" />
+							</div>
+
+							<div class="form-group col-6">
+								<label><h:outputText
+										value="#{translate['FechadeVencimiento']}:"></h:outputText> </label>
+								<h:inputText value="#{loteBean.lote.fechavecimiento}"
+									styleClass="form-control" />
+							</div>
+
+						</div>
+						<p>
+							<h:commandButton action="#{loteBean.registrar()}"
+								value="Registrar" styleClass="btn btn-primary" />
+							<h:commandButton action="#{loteBean.modificar()}"
+								value="Actualizar" styleClass="btn btn-success" />
+						</p>
+						<br />
+
+						<h:dataTable value="#{loteBean.listar}" var="lote"
+							styleClass="table main-grid">
+							<h:column>
+								<f:facet name="header">
+									<h:outputLabel value="#{translate['Id']}" />
+								</f:facet>
+								<h:outputLabel value="#{lote.idlote}" />
+							</h:column>
+
+							<h:column>
+								<f:facet name="header">
+									<h:outputLabel value="#{translate['FechadeFabricación']}" />
+								</f:facet>
+								<h:outputLabel value="#{lote.fechafabricacion}" />
+							</h:column>
+
+							<h:column>
+								<f:facet name="header">
+									<h:outputLabel value="#{translate['FechadeVencimiento']}" />
+								</f:facet>
+								<h:outputLabel value="#{lote.fechavecimiento}" />
+							</h:column>
+
+							<h:column>
+								<f:facet name="header">
+									<h:outputLabel value="#{translate['Eliminar']}" />
+								</f:facet>
+								<h:commandLink actionListener="#{loteBean.eliminar(lote)}"
+									value="Eliminar" />
+							</h:column>
+
+							<h:column>
+								<f:facet name="header">
+									<h:outputLabel value="#{translate['Modificar']}" />
+								</f:facet>
+								<h:commandLink actionListener="#{loteBean.leer(lote)}"
+									value="Modificar" />
+							</h:column>
+
+						</h:dataTable>
+					</h:form>
+				</div>
+			</div>
+		</ui:define>
+	</ui:composition>
+</h:body>
+</html>

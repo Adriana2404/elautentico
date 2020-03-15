@@ -1,0 +1,107 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core">
+<h:head>
+	<title><h:outputText value="#{translate['Gestionarmarca']}"></h:outputText></title>
+</h:head>
+<h:body>
+	<ui:composition template="/template/Plantilla.xhtml">
+		<ui:define name="mainContain">
+			<div class="panel panel-default">
+				<div class="panel-heading">
+					<h:outputText value="#{translate['marca']}"></h:outputText>
+				</div>
+				<div class="panel-body">
+					<h:form>
+
+						<div class="form-row">
+
+							<div class="form-group col-6">
+								<label><h:outputText value="#{translate['Idmarca']}:"></h:outputText>
+								</label>
+								<h:inputText disabled="true" value="#{marcaBean.marca.idmarca}"
+									styleClass="form-control" />
+							</div>
+
+							<div class="form-group col-6">
+								<label><h:outputText value="#{translate['nombre']}:"></h:outputText>
+								</label>
+								<h:inputText value="#{marcaBean.marca.nombre}"
+									styleClass="form-control" />
+							</div>
+
+
+							<div class="form-group col-6">
+								<label><h:outputText value="#{translate['nit']}:"></h:outputText>
+								</label>
+								<h:inputText value="#{marcaBean.marca.nit}"
+									styleClass="form-control" />
+							</div>
+
+
+						</div>
+						<p>
+							<h:commandButton action="#{marcaBean.registrar()}"
+								value="Registrar" styleClass="btn btn-primary" />
+							<h:commandButton action="#{marcaBean.modificar()}"
+								value="Actualizar" styleClass="btn btn-success" />
+						</p>
+						<br />
+
+						<h:dataTable value="#{marcaBean.listar}" var="mar"
+							styleClass="table">
+							<h:column>
+								<f:facet name="header">
+									<h:outputLabel value="#{translate['Idmarca']}" />
+								</f:facet>
+								<h:outputLabel value="#{mar.idmarca}" />
+							</h:column>
+
+							<h:column>
+								<f:facet name="header">
+									<h:outputLabel value="#{translate['nombre']}" />
+								</f:facet>
+								<h:outputLabel value="#{mar.nombre}" />
+							</h:column>
+							<h:column>
+								<f:facet name="header">
+									<h:outputLabel value="#{translate['nit']}" />
+								</f:facet>
+								<h:outputLabel value="#{mar.nit}" />
+							</h:column>
+
+
+							<h:column>
+								<f:facet name="header">
+									<h:outputLabel value="#{translate['nombremarca']}" />
+								</f:facet>
+								<h:outputLabel value="#{mar.nombre}" />
+							</h:column>
+
+							<h:column>
+								<f:facet name="header">
+									<h:outputLabel value="#{translate['Eliminar']}" />
+								</f:facet>
+								<h:commandLink actionListener="#{marcaBean.eliminar(mar)}"
+									value="Eliminar" />
+							</h:column>
+
+							<h:column>
+								<f:facet name="header">
+									<h:outputLabel value="#{translate['Modificar']}" />
+								</f:facet>
+								<h:commandLink actionListener="#{marcaBean.leer(mar)}"
+									value="Modificar" />
+							</h:column>
+
+						</h:dataTable>
+					</h:form>
+				</div>
+			</div>
+		</ui:define>
+	</ui:composition>
+</h:body>
+</html>

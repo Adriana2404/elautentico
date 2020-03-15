@@ -1,0 +1,81 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core">
+<h:head>
+	<title><h:outputText value="#{translate['GestionarLotes']}"></h:outputText></title>
+</h:head>
+<h:body>
+	<ui:composition template="/template/Plantilla.xhtml">
+		<ui:define name="mainContain">
+			<script src="js/jquery-1.11.1.min.js"></script>
+			<script src="js/d3.v5.min.js"></script>
+			<script src="js/c3.min.js"></script>
+			<script src="js/exportDataTable.js"> </script>
+			
+		<div class="row">
+			
+			<div class="panel panel-default">
+			<div class="panel-heading">Dashboard
+				</div>
+			<div class="panel-body">
+			<h4 style="color: #000; text-align: center">#{translate['productografico']}</h4><br/><br/>
+			<div id="chart"></div>
+			<script>
+			var chart = c3.generate({
+			    data: {
+				    bindto: "#chart",
+			        columns: [
+			        ],
+			        type: 'bar'
+			    },
+				color: {
+			        pattern: ['#1f77b4', '#ffbb78', '#2ca02c', '#98df8a', '#d62728', '#ff9896', '#9467bd', '#c5b0d5', '#8c564b', '#c49c94', '#e377c2', '#f7b6d2', '#7f7f7f', '#c7c7c7', '#bcbd22', '#dbdb8d', '#17becf', '#9edae5']
+			    },
+			    tooltip: {
+			        show: false
+			    }
+			});
+
+			function exportImageAsPNG(){
+		        var svgElements = $("#chart").find('svg');
+		        var svg ;
+		        svgElements.each(function() {
+		            svg = this;
+		        });
+		        var img = document.getElementById("fromcanvas");
+		        svg.toDataURL("image/png", {
+		            callback: function(data) {
+		                img.setAttribute("src", data)
+		                document.getElementById("downloadlink").href = data;
+		                document.getElementById("downloadlink").style.display = "initial";
+		            }
+		        })
+		        
+		    };
+			</script>
+			<ui:repeat var="prod" value="#{productoBean.listar}">
+			
+			<script>
+			setTimeout(function () {
+			chart.load({
+		        columns: [
+		            ['#{prod.nombreProducto}', #{prod.cantidad}]
+		        ]
+		    });
+			}, 1000);
+			</script>
+			</ui:repeat>
+			<a onclick="exportImageAsPNG()" class="btn btn-primary" href="#">Exportar</a>
+			<a style="display: none" class="btn btn-primary" id="downloadlink" href="#" download="true">Descargar
+			<img src="" id="fromcanvas" style="display: none" />
+			</a>
+			</div>
+			</div>
+		</div>
+		</ui:define>
+	</ui:composition>
+</h:body>
+</html>

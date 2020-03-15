@@ -1,0 +1,226 @@
+  <!doctype html>
+<html lang="es">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+
+    <title>El Autentico</title>
+
+    <!-- CSS -->
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <link rel="stylesheet" href="css/estilos.css">
+    <link rel="stylesheet" href="css/font-awesome.min.css">
+
+  
+  <script src="js/bootstrap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+    
+  
+  
+</head>
+
+<body class="d-flex flex-column h-100">
+    <header>
+        <!-- nav -->
+      <nav class="navbar navbar-expand-md fixed-top ">
+            <a class="navbar-brand"><img src="image/logo.gif" width="30" height="30" class="d-inline-block align-top" alt=""> El Autentico</a>
+
+            <div class="collapse navbar-collapse" id="navbarCollapse">
+                <ul class="navbar-nav mr-auto ml-auto">
+                    <li class="nav-item active">
+                        <a class="nav-link" href="index.html">Inicio</a>
+                    </li>
+
+                    <li class="nav-item dropdown">
+                        <a class="nav-link" href="login.html" id="navbarDropdown" role="button">
+                        Login
+                    </a>
+                    </li>
+                    <li class="nav-item active">
+                        <a class="nav-link" href="nosotros.html">Quienes somos</a>
+                    </li>
+                    <li class="nav-item active">
+                        <a class="nav-link" href="contacto.html">Contactenos</a>
+                    </li>
+                    
+                    
+                    <li class="nav-item active">
+                    <a class="nav-link" href="index-eng.html">
+                    <img src="image/us.png" width="25" height="25" class="d-inline-block align-top" alt=""> </a>
+                    </li>
+
+                </ul>
+
+            </div>
+        </nav>
+    </header>
+
+    <!-- contenido -->
+    <main role="main" class="flex-shrink-0">
+        <div class="img-full">
+            <div class="container align-left">
+                <div class="row justify-content-center">
+                    <div class="media-container-column mbr-white col-md-10">
+
+                        
+                            <div class="login-box form-group" style="width: 70%;">
+                                <form action="" style="padding: 0; width: auto; margin: 0;">
+                                    <div class="row">
+                                        <div class="col-md-6">
+                                                <label for="input-r-1">Primer Nombre:</label>  <br>
+                                                <input minlength="1" maxlength="45" pattern="[a-zA-Z]+" title="Este campo sólo acepta letras" required type="text" id="input-r-1" placeholder="Nombre XX" class="form-control">
+                                            </div>
+                                            <br>
+                                            <div class="col-md-6">
+                                                <label for="input-r-2">Segundo Nombre:</label>  <br>
+                                                <input minlength="1" maxlength="45" pattern="[a-zA-Z]+" title="Este campo sólo acepta letras" type="text" id="input-r-2" placeholder="Nombre YY" class="form-control">
+                                        </div>
+                                        <br>
+                                    </div>
+                                    
+                                    <div class="row">
+                                        <div class="col-md-6">
+                                            <label for="input-r-3">Primer Apellido:</label>  <br>
+                                            <input minlength="1" maxlength="45" pattern="[a-zA-Z]+" title="Este campo sólo acepta letras" required type="text" id="input-r-3" placeholder="Apellido XX" class="form-control">
+                                        </div>
+                                        <br>
+                                        <div class="col-md-6">
+                                        
+                                            <label for="input-r-4">Segundo Apellido:</label>  <br>
+                                            <input minlength="1" maxlength="45" pattern="[a-zA-Z]+" title="Este campo sólo acepta letras" type="text" id="input-r-4" placeholder="Apellido YY" class="form-control">
+                                        </div>
+                                        <br>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-md-6">
+                                            <label for="input-r-5">Tipo de Documento: </label>  <br>
+                                            <select required class="form-control" name="Tipo de Documento" id="input-r-5">
+                                                <option value="">Seleccione...</option>
+                                                <option value="1">Cédula de Ciudadania</option>
+                                                <option value="2">Cédula de Extranjería</option>
+                                                <option value="3">Tarjeta de Identidad</option>
+                                                <option value="4">NIT</option>
+                                            </select>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <label for="input-r-6">Número de Documento: </label>  <br>
+                                            <input minlength="1" maxlength="15" pattern="^(0|[1-9][0-9]*)$" title="Este campo sólo acepta valores númericos" required required  type="text" id="input-r-6" placeholder="123456789" class="form-control">
+                                        </div>
+                                        <br>
+                                    </div>
+                                    <div class="row">
+                                            <div class="col-md-6">
+                                                <label for="password">Contraseña: </label>  <br>
+                                                <input minlength="5" required id="password" type="password" placeholder="Contraseña" class="form-control">
+                                            </div>
+                                            <div class="col-md-6">
+                                                <label for="confirm_password">Confirmación de Contraseña: </label>  <br>
+                                                <input minlength="5" required id="confirm_password" type="password" id="input-r-62" placeholder="Contraseña" class="form-control">
+                                            </div>
+                                            <br>
+                                        </div>
+                                    <div class="row">
+                                        <div class="col-md-6">
+                                            <label for="input-r-7">Teléfono: </label>  <br>
+                                            <input maxlength="10" pattern="^(0|[1-9][0-9]*)$" title="Ingrese un valor válido para número de teléfono" required type="text" id="input-r-7" placeholder="655-656-5656" class="form-control">
+                                        </div>
+                                        <div class="col-md-6">
+                                                <label for="input-r-8">Correo Electrónico: </label>  <br>
+                                                <input required type="email" id="input-r-8" placeholder="ejemplo@zzz.com" class="form-control">
+                                        </div>
+                                        <br>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-md-6">
+                                            <label for="input-r-9">Dirección: </label>  <br>
+                                            <input required type="text" id="input-r-9" placeholder="Cll XX # YY - ZZ" class="form-control">
+                                        </div>
+                                        <div class="col-md-6">
+                                            <label for="input-r-10">Fecha de Nacimiento: </label>  <br>
+                                            <input required type="date" id="input-r-10" placeholder="aaaa-mm-dd" class="form-control">
+                                        </div>
+                                        <br>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-md-6">
+                                            <label for="input-r-11">Ciudad: </label>  <br>
+                                            <select required class="form-control" name="Ciudad" id="input-r-11">
+                                                <option value="">Seleccione...</option>
+                                                <option value="1">Valledupar</option>
+                                            </select>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <label for="input-r-12">Barrio: </label>  <br>
+                                            <select required class="form-control" name="Barrio" id="input-r-12">
+                                                <option value="">Seleccione...</option>
+                                                <option value="1">La garita</option>
+                                                <option value="2">Gaitán</option>
+                                                <option value="3">Loparena</option>
+                                                <option value="4">Las Acacias</option>
+                                                <option value="5">Villa Carel</option>
+                                            </select>
+                                        </div>
+                                        <br>
+                                    </div>
+                                    
+                                    <input type="submit" class="btn btn-primary submit-button" style="margin-top: 20px;">
+                                    <br>
+                                    <p style="text-align: center; padding-top: 15px; margin-bottom: 0;">
+                                        ¿Ya estás registrado en el sistema?
+                                        <a href="login.html" style="color: #a68aff">Iniciar Sesión</a>
+                                    </p> 
+                                </form>
+                            </div>
+                            <script>
+                                    var password = document.getElementById("password"), 
+                                    confirm_password = document.getElementById("confirm_password");
+                                
+                                    function validatePassword(){
+                                    if(password.value != confirm_password.value) {
+                                        confirm_password.setCustomValidity("Las contraseñas no coinciden");
+                                    } else {
+                                        confirm_password.setCustomValidity('');
+                                    }
+                                    }
+                                
+                                    password.onchange = validatePassword;
+                                    confirm_password.onkeyup = validatePassword;
+                                </script>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </main>
+
+    <footer class="footer" style="margin-top: 0;">
+
+        <div class="container">
+            <div class="row">
+                <div class="col-sm mx-auto">
+                    <h5>  Compañia</h5>
+                    <p>5 años en el mercado
+                    <br> <i class="fa fa-map-marker" aria-hidden="true"></i>
+          Valledupar, Colombia. </p>
+                </div>
+                <div class="col-sm">
+                    <h5>  Compañia</h5>
+                </div>
+                <div class="col-sm ">
+                    <h5>  Redes Sociales</h5> 
+          <i class="fa fa-facebook" aria-hidden="true"></i>
+          lina nagles
+                    <br><i class="fa fa-instagram" aria-hidden="true"></i>
+          nagles_lina
+                </div>
+            </div>
+        </div>
+
+    </footer>
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
+    <script src="js/bootstrap.bundle.min.js"></script>
+</body>
+
+</html>

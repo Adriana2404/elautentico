@@ -1,0 +1,88 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core">
+<h:head>
+	<title><h:outputText
+			value="#{translate['Gestionartipoproducto']}"></h:outputText></title>
+</h:head>
+<h:body>
+	<ui:composition template="/template/Plantilla.xhtml">
+		<ui:define name="mainContain">
+			<div class="panel panel-default">
+				<div class="panel-heading">
+					<h:outputText value="#{translate['tipoproducto']}"></h:outputText>
+				</div>
+				<div class="panel-body">
+					<h:form>
+
+						<div class="form-row">
+
+							<div class="form-group col-6">
+								<label><h:outputText
+										value="#{translate['Idtipoproducto']} :"></h:outputText> </label>
+								<h:inputText disabled="true"
+									value="#{tipoproductoBean.tipoproducto.idtipoproducto}"
+									styleClass="form-control" />
+							</div>
+
+							<div class="form-group col-6">
+								<label><h:outputText value="#{translate['Nombre']} :"></h:outputText>
+								</label>
+								<h:inputText value="#{tipoproductoBean.tipoproducto.nombre}"
+									styleClass="form-control" />
+							</div>
+
+
+						</div>
+						<p>
+							<h:commandButton action="#{tipoproductoBean.registrar()}"
+								value="Registrar" styleClass="btn btn-primary" />
+							<h:commandButton action="#{tipoproductoBean.modificar()}"
+								value="Actualizar" styleClass="btn btn-success" />
+						</p>
+						<br />
+
+						<h:dataTable value="#{tipoproductoBean.listar}" var="tip"
+							styleClass="table">
+							<h:column>
+								<f:facet name="header">
+									<h:outputLabel value="#{translate['Idtipoproducto']}" />
+								</f:facet>
+								<h:outputLabel value="#{tip.idtipoproducto}" />
+							</h:column>
+
+							<h:column>
+								<f:facet name="header">
+									<h:outputLabel value="#{translate['Nombre']}" />
+								</f:facet>
+								<h:outputLabel value="#{tip.nombre}" />
+							</h:column>
+
+							<h:column>
+								<f:facet name="header">
+									<h:outputLabel value="#{translate['Eliminar']}" />
+								</f:facet>
+								<h:commandLink
+									actionListener="#{tipoproductoBean.eliminar(tip)}"
+									value="Eliminar" />
+							</h:column>
+
+							<h:column>
+								<f:facet name="header">
+									<h:outputLabel value="#{translate['Modificar']}" />
+								</f:facet>
+								<h:commandLink actionListener="#{tipoproductoBean.leer(tip)}"
+									value="Modificar" />
+							</h:column>
+
+						</h:dataTable>
+					</h:form>
+				</div>
+			</div>
+		</ui:define>
+	</ui:composition>
+</h:body>
+</html>

@@ -1,0 +1,125 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core">
+<h:head>
+	<title><h:outputText
+			value="#{translate['Gestionarinventario']}"></h:outputText></title>
+</h:head>
+<h:body>
+	<ui:composition template="/template/Plantilla.xhtml">
+		<ui:define name="mainContain">
+			<div class="panel panel-default">
+				<div class="panel-heading">
+					<h:outputText value="#{translate['inventario']}"></h:outputText>
+				</div>
+				<div class="panel-body">
+					<h:form>
+
+						<div class="form-row">
+
+							<div class="form-group col-6">
+								<label><h:outputText
+										value="#{translate['Idinventario']}:"></h:outputText> </label>
+								<h:inputText disabled="true"
+									value="#{inventarioBean.inventario.idinventario}"
+									styleClass="form-control" />
+							</div>
+
+							<div class="form-group col-6">
+								<label><h:outputText
+										value="#{translate['cantocupada']}:"></h:outputText> </label>
+								<h:inputText value="#{inventarioBean.inventario.cantocupada}"
+									styleClass="form-control" />
+							</div>
+
+							<div class="form-group col-6">
+								<label><h:outputText
+										value="#{translate['cantdisponible']}:"></h:outputText> </label>
+								<h:inputText value="#{inventarioBean.inventario.cantdisponible}"
+									styleClass="form-control" />
+							</div>
+							<div class="form-group col-6">
+								<label><h:outputText
+										value="#{translate['fechaInventario']}:"></h:outputText> </label>
+								<h:inputText
+									value="#{inventarioBean.inventario.fechaInventario}"
+									styleClass="form-control" />
+							</div>
+						</div>
+						<p>
+							<h:commandButton action="#{inventarioBean.registrar()}"
+								value="Registrar" styleClass="btn btn-primary" />
+							<h:commandButton action="#{inventarioBean.modificar()}"
+								value="Actualizar" styleClass="btn btn-success" />
+						</p>
+						<br />
+
+						<h:dataTable value="#{inventarioBean.listar}" var="inv"
+							styleClass="table">
+							<h:column>
+								<f:facet name="header">
+									<h:outputLabel value="#{translate['Idinventario']}" />
+								</f:facet>
+								<h:outputLabel value="#{inv.idinventario}" />
+							</h:column>
+
+							<h:column>
+								<f:facet name="header">
+									<h:outputLabel value="#{translate['cantocupada']}" />
+								</f:facet>
+								<h:outputLabel value="#{inv.cantocupada}" />
+							</h:column>
+							<h:column>
+								<f:facet name="header">
+									<h:outputLabel value="#{translate['cantdisponible']}" />
+								</f:facet>
+								<h:outputLabel value="#{inv.cantdisponible}" />
+							</h:column>
+
+							<h:column>
+								<f:facet name="header">
+									<h:outputLabel value="#{translate['fechaInventario']}" />
+								</f:facet>
+								<h:outputLabel value="#{inv.fechaInventario}" />
+							</h:column>
+
+							<h:column>
+								<f:facet name="header">
+									<h:outputLabel value="#{translate['NombreProducto']}" />
+								</f:facet>
+								<h:outputLabel value="#{inv.NombreProducto}" />
+							</h:column>
+
+							<h:column>
+								<f:facet name="header">
+									<h:outputLabel value="#{translate['valor']}" />
+								</f:facet>
+								<h:outputLabel value="#{inv.valor}" />
+							</h:column>
+							<h:column>
+								<f:facet name="header">
+									<h:outputLabel value="#{translate['Eliminar']}" />
+								</f:facet>
+								<h:commandLink actionListener="#{inventarioBean.eliminar(inv)}"
+									value="Eliminar" />
+							</h:column>
+
+							<h:column>
+								<f:facet name="header">
+									<h:outputLabel value="#{translate['Modificar']}" />
+								</f:facet>
+								<h:commandLink actionListener="#{inventarioBean.leer(inv)}"
+									value="Modificar" />
+							</h:column>
+
+						</h:dataTable>
+					</h:form>
+				</div>
+			</div>
+		</ui:define>
+	</ui:composition>
+</h:body>
+</html>
