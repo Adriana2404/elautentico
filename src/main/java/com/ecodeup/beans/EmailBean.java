@@ -5,17 +5,13 @@ import java.util.Arrays;
 import java.util.List;
 import java.util.Properties;
 
-import javax.faces.bean.ManagedBean;
-import javax.faces.bean.ViewScoped;
 import javax.mail.Message;
 import javax.mail.MessagingException;
 import javax.mail.Session;
 import javax.mail.Transport;
 import javax.mail.internet.InternetAddress;
 import javax.mail.internet.MimeMessage;
- 
-@ManagedBean(name="email")
-@ViewScoped
+
 public class EmailBean {
 	private final Properties properties = new Properties();
 	
